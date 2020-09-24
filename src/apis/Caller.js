@@ -10,14 +10,12 @@ export default class NasaPic extends React.Component {
     componentDidMount(){
         axios.get('https://api.nasa.gov/planetary/apod', {params: {api_key: 'CbAJPPepvmsgmVLNxZsaER0hat8epkD0fbfUiiEX'}})
             .then((response)=>{
-                if(response.status === 200){
-                    const pic_url = response.data.url;
-                    this.setState({pic_url});
-                }
+                const pic_url = response.data.url;
+                this.setState({pic_url});
                 
             }).catch(error => {
-                this.setState({space_default})
-                console.log(error);
+                this.setState({pic_url: space_default.toString()})
+                
             });
     }
 
